@@ -1,24 +1,15 @@
 # frontendtest
 
-## Project setup
+## Instalar dependencias
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Correr servidor de desarrollo
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# Rutas
+1. /: Redirige hacia el formulario de encuesta.
+2. /statitics: Redirige a la seccion de estadisticas.
