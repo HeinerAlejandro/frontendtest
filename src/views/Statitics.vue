@@ -42,7 +42,7 @@
         <template #first_panel>
             <ContainerNumber
                 v-if="snMLLoved"
-                :content="snMLLoved[0][0]" 
+                :content="CMostLoveSN" 
                 title="Most Loved Social Network"
             >
                 <template #icon><LikeTwoTone class="chart-icon" two-tone-color="#00ba19" /></template>
@@ -51,7 +51,7 @@
         <template #second_panel>
             <ContainerNumber
                 v-if="snMLLoved"
-                :content="snMLLoved[1][0]" 
+                :content="CLeastVoteSN" 
                 title="Least Loved Social Network"
             >
                 <template #icon><DislikeTwoTone class="chart-icon" two-tone-color="#ee0000" /></template>
@@ -77,7 +77,9 @@
             <template v-slot="child">
                 <a-col 
                     class="mt-1"
-                    span = "4"
+                    :lg="{ span: 4 }"
+                    :md="{ span: 12 }"
+                    :xs="{ span: 24 }"
                     v-for="(value, key) of child.data"
                     :key="key"
                 >
@@ -136,8 +138,11 @@ export default {
         const CMostTimeSN = ref(null)
         const CLeastTimeSN = ref(null)
         
-        const mostUsedPerAge = ref(null)
+        const CMostLoveSN = ref(null)
+        const CLeastVoteSN = ref(null)
 
+        const mostUsedPerAge = ref(null)
+        
         const url_sm_used_per_age = ref(POLL_SN_PER_AGE_URL)
 
         const success_logic = response => {
@@ -150,6 +155,9 @@ export default {
 
             testDataVotePerSN.value = getVotesPerSN(polls.value)()
             snMLLoved.value = getSNMLLoved(testDataVotePerSN.value)()
+        
+            CMostLoveSN.value = `${snMLLoved.value[0][0]}: ${snMLLoved.value[0][1]}`
+            CLeastVoteSN.value = `${snMLLoved.value[1][0]}: ${snMLLoved.value[1][1]}`
         }
 
         const error_logic = err => {
@@ -189,6 +197,8 @@ export default {
             snMLLoved,
             CMostTimeSN,
             CLeastTimeSN,
+            CMostLoveSN,
+            CLeastVoteSN,
             mostUsedPerAge,
             url_sm_used_per_age
         }
