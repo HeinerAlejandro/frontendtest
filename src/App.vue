@@ -1,26 +1,42 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <a-layout>
+    <a-layout-sider 
+      :trigger="null"
+    >
+      <Menu />
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-header>
+        <Header :pageTitle="pageTitle" />
+      </a-layout-header>
+      <a-layout-content
+        :style="{ margin: '24px 36px', padding: '24px', background: '#fff', minHeight: '280px' }"
+      >
+        <router-view />
+      </a-layout-content>
+    </a-layout>
+  </a-layout>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
+import { computed, defineComponent } from 'vue'
+import { useRoute } from 'vue-router';
+import Menu from './components/Menu.vue'
+import Header from './components/Header.vue'
+
+export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
+  setup() {
+    const pageTitle = computed(() => useRoute().name)
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+    return {
+      pageTitle
+    }
+  },
+  components: {
+    Menu,
+    Header
+  }
+})
+</script>
