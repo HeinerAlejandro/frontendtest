@@ -1,5 +1,5 @@
 <template>
-    <p style="color:white;display:inline-block;margin-left:24px;font-size:24px; font-weight:bold;">{{ pageTitle }}</p>
+    <p class="title-header">{{ pageTitle }}</p>
 </template>
 
 <script>
@@ -9,3 +9,14 @@ export default {
     props: ['pageTitle']
 }
 </script>
+
+<style>
+    .title-header {
+        color:white;
+        display:inline-block;
+        margin-left:24px;
+        font-size:24px;
+        font-weight:bold;
+    }
+    
+</style>
