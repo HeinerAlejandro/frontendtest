@@ -20,23 +20,23 @@
 
 <script>
 
-import { computed, defineComponent } from 'vue'
+import { computed } from 'vue'
 import { useRoute } from 'vue-router';
 import Menu from './components/Menu.vue'
 import Header from './components/Header.vue'
 
-export default defineComponent({
+export default {
   name: 'App',
   setup() {
     const pageTitle = computed(() => useRoute().name)
-
+    
     return {
       pageTitle
     }
   },
   components: {
     Menu,
-    Header
+    Header,
   }
-})
+}
 </script>
