@@ -1,9 +1,7 @@
 <template>
     <a-menu
-        v-model:openkeys="openkeys"
         v-model:selectedKeys="selectedKeys"
-        :mode="vertical"
-        :theme="light"
+        :mode="mode"
         style="min-height: 100%"
     >
         <a-menu-item key="1">
@@ -31,20 +29,24 @@ import {
     PieChartFilled,
     EditFilled
 } from '@ant-design/icons-vue';
-import { defineComponent, ref } from 'vue';
 
-export default defineComponent({
+import { ref } from 'vue';
+
+export default {
     name: 'Menu',
     setup() {
-        const selectedKeys = ref(['1'])
-        return {
-            selectedKeys
-        }
+      const mode = ref("vertical")
+      const selectedKeys = ref(['1'])
+
+      return {
+        mode,
+        selectedKeys
+      }
     },
     components: {
         PieChartFilled,
         EditFilled,
     }
-})
+}
 
 </script>
